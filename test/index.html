@@ -1,0 +1,29 @@
+<meta charset="utf-8">
+<link rel="stylesheet" href="../node_modules/grunt-blanket-mocha/node_modules/mocha/mocha.css">
+<div id="mocha"><!--CONTENT OF TEST RESULTS --></div>
+<div id="test" style="position: fixed; top: 0; left: -99999px;">
+</div>
+
+<!-- Testing dependencies -->
+<script src="../node_modules/chai/chai.js"></script>
+<script src="../node_modules/sinon-chai/lib/sinon-chai.js"></script>
+<script src="../node_modules/sinon/pkg/sinon.js"></script>
+<script src="../node_modules/grunt-blanket-mocha/node_modules/mocha/mocha.js"></script>
+<script src="../node_modules/grunt-blanket-mocha/node_modules/blanket/dist/mocha/blanket_mocha.js"></script>
+<script src="../node_modules/grunt-blanket-mocha/support/mocha-blanket.js"></script>
+<!-- We will using BDD-style assertions. See Mocha documentation for more info -->
+<script>mocha.setup('tdd');</script>
+<!--Class to TEST-->
+<script src="../js/Telefilm.js" data-cover></script>
+<!--Test suite-->
+<script src="telefilm-test.js"></script>
+<script>
+//Running on PHANTOMJS
+if (window.PHANTOMJS) {
+   blanket.options("reporter", "../node_modules/grunt-blanket-mocha/support/grunt-reporter.js");
+}
+// Running on browser
+else {
+   mocha.run();
+}
+</script>
